@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class PriorityQueue {
+public class PriorityQueues {
     private final ArrayList<Node> queueArray = new ArrayList<>();
 
     // Note: the smaller number means the higher priority
@@ -57,7 +57,7 @@ public class PriorityQueue {
     }
 
     public static void main(String[] args) {
-        PriorityQueue queue = new PriorityQueue();
+        PriorityQueues queue = new PriorityQueues();
         queue.enqueue("akshay", 3);
         queue.enqueue("rohit", 1);
         queue.enqueue("adam", 2);
