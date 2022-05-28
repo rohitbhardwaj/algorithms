@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.Hashtable;
 
-public class Graph {
+public class Graphs {
     int numberOfNodes = 0;
     Hashtable<Integer, ArrayList<Integer>> adjacentList = new Hashtable<>();
 
@@ -23,7 +23,7 @@ public class Graph {
     }
 
     public static void main(String[] args) {
-        Graph graph = new Graph();
+        Graphs graph = new Graphs();
         graph.addVertex(5);
         graph.addVertex(54);
         graph.addVertex(44);
