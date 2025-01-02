@@ -1,59 +1,79 @@
-/*.............. Merge Sorted Arrays ..............*/
-// merge two sorted arrays so that final result is a merged sorted array.
-// example: [0,3,4,31] and [4,6,30] when merged gives output:
-// [0, 3, 4, 4, 6, 30, 31]
-
+/**
+ * The MergeSortedArrays class provides a method to merge two sorted integer arrays
+ * into a single sorted array. This is a fundamental algorithmic problem that
+ * tests understanding of array manipulation and efficient merging techniques.
+ */
 import java.util.Arrays;
 
-public class MergeSortedArrays {   
+public class MergeSortedArrays {
+
+    /**
+     * Merges two sorted arrays into a single sorted array.
+     *
+     * @param arr1 The first sorted array of integers.
+     * @param arr2 The second sorted array of integers.
+     * @return A new sorted array containing all elements from arr1 and arr2.
+     */
     private int[] mergeArrays(int[] arr1, int[] arr2) {
-        // i is index count of arr1
-        // j is index count of arr2
-        // k is index count of mergedArray
-        int i = 0, j = 0, k = 0;    
-        // mergedArrayLength will be total length of arr1 and arr2.
+        // Initialize index counters for arr1, arr2, and the merged array
+        int i = 0, j = 0, k = 0;
+        // Calculate the total length of the merged array
         int mergedArrayLength = arr1.length + arr2.length;
 
-        // create mergedArray {an array which will have merged elements}
+        // Create the merged array to hold all elements from arr1 and arr2
         int[] mergedArray = new int[mergedArrayLength];
 
-        // checking elements of both array and adding the least element first in the merged array.
+        /**
+         * Iterate through both arrays, comparing the current elements and adding
+         * the smaller one to the merged array. Increment the respective index counters.
+         */
         while (i < arr1.length && j < arr2.length) {
             if (arr1[i] < arr2[j]) {
                 mergedArray[k] = arr1[i];
-                i++;
+                i++; // Move to the next element in arr1
             } else {
                 mergedArray[k] = arr2[j];
-                j++;
+                j++; // Move to the next element in arr2
             }
-            k++;
+            k++; // Move to the next position in mergedArray
         }
+
         /*
-         some or one of the elements of one of the arrays will
-         be remaining to be put into the merged array,
-         because those elements would be greater than the elements of
-         the other array.
+         * After one of the arrays is exhausted, append the remaining elements
+         * from the other array to the merged array.
          */
 
-        // adding remaining elements of arr1 into mergedArray, if any.
+        // Add any remaining elements from arr1
         while (i < arr1.length) {
             mergedArray[k] = arr1[i];
             i++;
             k++;
         }
-        // adding remaining elements of arr2 into mergedArray, if any.
+
+        // Add any remaining elements from arr2
         while (j < arr2.length) {
             mergedArray[k] = arr2[j];
             j++;
             k++;
         }
-        return mergedArray;
+
+        return mergedArray; // Return the fully merged and sorted array
     }
 
+    /**
+     * The main method serves as an entry point to test the mergeArrays method with sample inputs.
+     *
+     * @param args Command-line arguments (not used).
+     */
     public static void main(String[] args) {
         MergeSortedArrays arrays = new MergeSortedArrays();
-        int[] arr3 = arrays.mergeArrays(new int[]{0, 3, 4, 31}, new int[]{4, 6, 30});
-        System.out.println(Arrays.toString(arr3));
+        // Sample input arrays
+        int[] arr1 = {0, 3, 4, 31};
+        int[] arr2 = {4, 6, 30};
 
+        // Merge the two arrays
+        int[] mergedArray = arrays.mergeArrays(arr1, arr2);
+        // Display the merged array
+        System.out.println("Merged Array: " + Arrays.toString(mergedArray));
     }
 }
