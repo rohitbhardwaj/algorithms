@@ -1,6 +1,6 @@
 # Coding Interview Bootcamp
 
-![O'Reilly Media](https://img.shields.io/badge/Published%20by-O'Reilly%20Media%2C%20Inc.-blue)
+![O'Reilly Media](https://img.shields.io/badge/Published%20by-Rohit Bhardwaj-blue)
 
 ## Overview
 
@@ -209,11 +209,7 @@ The time frames are only estimates and may vary according to the class's progres
 - **Materials:** All necessary materials and resources will be provided during the sessions.
 - **Support:** Access to live support from instructors during the bootcamp.
 
----
-
-## Contact
-
-For any inquiries or support, please contact us at [support@oreilly.com](mailto:support@oreilly.com).
+--- 
 
 ---
 
