@@ -4,8 +4,6 @@
 
 **Level:** Intermediate  
 **Duration:** 2 Days  
-**Status:** Live Event  
-**Time Remaining:** 5h 45m  
 
 Embark on a transformative journey with our **Coding Interview Bootcamp** designed to equip you with the skills and confidence needed to excel in coding interviews. This bootcamp leverages a proven **7-step framework** to systematically approach, solve, and optimize algorithmic problems.
 
