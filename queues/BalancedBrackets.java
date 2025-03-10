@@ -4,13 +4,13 @@
  * closing bracket in the correct order and type. This problem is fundamental in understanding
  * stack operations and is commonly encountered in coding interviews.
  *
- * The class includes:
+ * The class includes: 
  * 1. A method `areBracketsBalanced` that uses a stack-based approach to verify bracket balance.
  * 2. A `main` method to demonstrate and test the functionality with sample inputs.
  */
 import java.util.*;
 
-public class BalancedBrackets {
+public class BalancedBrackets { 
 
     /**
      * Checks if the brackets in the given expression are balanced.

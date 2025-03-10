@@ -87,8 +87,8 @@ public class SubarraySumEqualsK {
             new TestCase(new int[]{1}, 0, 0),
             new TestCase(new int[]{0, 0, 0, 0}, 0, 10),
             new TestCase(new int[]{1, 2, 1, 2, 1}, 3, 4),
-            new TestCase(new int[]{1000, -1000, 1000}, 1000, 2),
-            new TestCase(new int[]{1, -1, 1, -1, 1, -1}, 0, 3)
+            new TestCase(new int[]{1000, -1000, 1000}, 1000, 3),
+            new TestCase(new int[]{1, -1, 1, -1, 1, -1}, 0, 9)
         };
 
         // Iterate through each test case, call the subarraySum method, and display the results.
