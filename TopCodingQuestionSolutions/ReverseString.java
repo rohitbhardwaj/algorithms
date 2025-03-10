@@ -4,7 +4,7 @@
 //example ['h', 'e', 'l', 'l', 'o'] --> ['o', 'l', 'l', 'e', 'h']
 
 
-public class ReverseString {
+public class ReverseString { 
   public void reverseString(char[] s) {
    int left = 0;
    int end = s.length-1;

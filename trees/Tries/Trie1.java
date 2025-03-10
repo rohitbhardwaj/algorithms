@@ -6,7 +6,7 @@ public class Trie1 {
     ////////////////////////////////////////
     public void insert(String string) {
         Node current = root;
-        /*
+        /* 
            for each character in the word check if that character exists
            in hashmap, if not then add the character as a key in the map
            and a new node as its value. Do this until all characters are
