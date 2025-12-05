@@ -3,13 +3,16 @@ package recurssion;
 /**
  * PaymentService processes payments.
  *
- * BAD DESIGN:
- * - Depends on NotificationService.
- * - Should only handle transactions, not messaging or logging.
+ * Collaborates with NotificationService via constructor injection so
+ * messaging can be composed without hard dependencies.
  */
 public class PaymentService {
 
-    private final NotificationService notificationService = new NotificationService();
+    private final NotificationService notificationService;
+
+    public PaymentService(NotificationService notificationService) {
+        this.notificationService = notificationService;
+    }
 
     /**
      * Charges a customer.
@@ -22,8 +25,9 @@ public class PaymentService {
 
         System.out.println("Charging customer: " + customerId + " $" + amount);
 
-        // ❌ BAD: Cross-service messaging dependency
-        notificationService.sendPaymentReceipt(customerId, amount);
+        if (notificationService != null) {
+            notificationService.sendPaymentReceipt(customerId, amount);
+        }
 
         return true;
     }

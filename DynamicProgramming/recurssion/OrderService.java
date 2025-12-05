@@ -3,17 +3,23 @@ package recurssion;
 /**
  * OrderService is responsible for placing new orders.
  * 
- * BAD DESIGN EXAMPLE:
- * - This class depends on InventoryService AND PaymentService.
- * - It is also CALLED BACK by NotificationService, completing
- *   a circular dependency chain:
- *
- *   OrderService → InventoryService → PaymentService → NotificationService → OrderService
+ * Redesigned to avoid circular dependencies while keeping concerns clear.
  */
 public class OrderService {
 
-    private final InventoryService inventoryService = new InventoryService();
-    private final PaymentService paymentService = new PaymentService();
+    private final InventoryService inventoryService;
+    private final PaymentService paymentService;
+    private final NotificationService notificationService;
+
+    public OrderService() {
+        this(new InventoryService(), null, null);
+    }
+
+    OrderService(InventoryService inventoryService, PaymentService paymentService, NotificationService notificationService) {
+        this.inventoryService = inventoryService;
+        this.notificationService = notificationService != null ? notificationService : new NotificationService(this::onNotificationLogged);
+        this.paymentService = paymentService != null ? paymentService : new PaymentService(this.notificationService);
+    }
 
     /**
      * Attempts to place an order.
@@ -23,12 +29,10 @@ public class OrderService {
      */
     public void placeOrder(String sku, int quantity) {
 
-        // ❌ BAD: Order depends directly on Inventory
         if (!inventoryService.checkStock(sku, quantity)) {
             throw new IllegalStateException("Stock unavailable");
         }
 
-        // ❌ BAD: Order depends directly on Payment
         boolean paymentSuccess = paymentService.chargeCustomer("customer-123", 199.99);
 
         if (!paymentSuccess) {
@@ -37,11 +41,9 @@ public class OrderService {
 
         System.out.println("Order placed successfully.");
 
-        // ❌ WORST PART: Completing the cycle by calling NotificationService (indirectly)
-        new NotificationService().sendOrderConfirmation("customer-123", "ORDER-001");
+        notificationService.sendOrderConfirmation("customer-123", "ORDER-001");
     }
 
-    /** Called BACK by NotificationService, causing recursion risk. */
     public void onNotificationLogged(String message) {
         System.out.println("OrderService received callback: " + message);
     }
