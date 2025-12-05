@@ -3,13 +3,11 @@ package recurssion;
 /**
  * InventoryService checks stock levels.
  *
- * BAD DESIGN:
- * - Knows about PaymentService (tight coupling).
- * - Should be isolated, but instead calls PaymentService for "reservation fees."
+ * GOOD DESIGN:
+ * - Focuses purely on inventory concerns.
+ * - No longer triggers payments or other cross-cutting concerns.
  */
 public class InventoryService {
-
-    private final PaymentService paymentService = new PaymentService();
 
     /**
      * Checks whether stock exists for the given SKU.
@@ -22,10 +20,6 @@ public class InventoryService {
     public boolean checkStock(String sku, int qty) {
 
         System.out.println("Checking stock for " + sku);
-
-        // ❌ BAD: Inventory randomly forces a fee payment,
-        // creating a hidden dependency
-        paymentService.reserveFunds("customer-123", 10.00);
 
         return true; // pretend stock exists
     }
